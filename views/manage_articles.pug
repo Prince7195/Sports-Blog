@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col-md-8
+                h1 #{title}
+            .col-md-4
+                a(class='btn btn-default create-btn', href="/manage/articles/add") Add Articles
+        .row
+            .col-xs-12
+                != messages()
+        .row
+            .col-md-12
+                table(class='table table-striped')
+                    tr
+                        th Article Title
+                        th Date Published
+                        th Author
+                        th
+                    each article, i in articles
+                        tr 
+                            td #{article.title}
+                            td #{moment(article.created_at).format('MMM Do YYYY, h:mm:ss a')}
+                            td #{article.author}
+                            td  
+                                a(class='btn btn-tiny btn-default', href="/manage/articles/edit/"+article._id) Edit

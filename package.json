@@ -1,0 +1,26 @@
+{
+  "name": "sports-blog",
+  "version": "1.0.0",
+  "description": "Simple sports blog app",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "express": "^4.16.2",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
+    "moment": "^2.19.3",
+    "mongoose": "^4.13.5",
+    "pug": "^2.0.0-rc.4"
+  }
+}

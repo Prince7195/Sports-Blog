@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    .container
+        h1 #{article.title}
+        ul.errors
+            if(errors)
+                each error, i in errors
+                    li.alert.alert-danger #{error.msg}
+        h4.post-subtitle #{article.subtitle}
+                    p.post-meta
+                        | Posted by #{article.author}
+                        | on #{moment(article.created_at).format('MMM Do YYYY, h:mm:ss a')} 
+                    p.post-body
+                        | #{article.body}
+                    hr
+                    h4 Add Comment
+                    p
+                        form(action="/articles/comments/add/"+article._id, method="post")
+                            .form-group
+                                label Subject
+                                input.form-control(type="text", name='comment_subject')
+                            .form-group
+                                label Name
+                                input.form-control(type="text", name='comment_author')
+                            .form-group
+                                label Email
+                                input.form-control(type="text", name='comment_email')
+                            .form-group
+                                label Body
+                                textarea.form-control(name='comment_body')
+                            input.btn.btn-default(type="submit", name='submit' value="Add Comment")
+                    br
+                    br
+                    h3 Comments
+                    each comment, i in article.comments
+                        .well
+                            h5 Posted by - #{comment.comment_author}
+                            p #{comment.comment_body}

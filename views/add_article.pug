@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    .container
+        h1 #{title}
+        ul.errors
+            if(errors)
+                each error, i in errors
+                    li.alert.alert-danger #{error.msg}
+        form(action="/articles/add", method="post")
+            .form-group
+                label Title:
+                input(type="text", class="form-control", name="title")
+            .form-group
+                label Subtitle:
+                input(name="subtitle", class="form-control")
+            .form-group
+                label Category:
+                select(name="category", class="form-control")
+                    each category, i in categories
+                        option(value=category._id) #{category.title}
+            .form-group
+                label Author:
+                input(name="author", class="form-control")
+            .form-group
+                label Body:
+                textarea(name="body", class="form-control", cols="30", rows="10")
+
+            input(type="submit", class="btn btn-primary btn-block", name="submit", value="Add Article")
+            a(href="/manage/articles", class="btn btn-danger btn-block") Back

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .container
+        h1 #{title}
+        ul.errors
+            if(errors)
+                each error, i in errors
+                    li.alert.alert-danger #{error.msg}
+        form(action="/categories/add", method="post")
+            .form-group
+                label Title:
+                input(type="text", class="form-control", name="title")
+            .form-group
+                label Description:
+                textarea(name="description", class="form-control", cols="30", rows="10")
+            input(type="submit", class="btn btn-primary btn-block", name="submit", value="Add Category")
+            a(href="/manage/categories", class="btn btn-danger btn-block") Back
